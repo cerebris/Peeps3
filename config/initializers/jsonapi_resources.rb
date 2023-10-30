@@ -8,8 +8,6 @@ JSONAPI.configure do |config|
   config.default_paginator = :paged # default is :none
 
   config.default_page_size = 10
-  config.maximum_page_size = 100
-
-  # config.default_included_strategy = :through_parent_resource_0_10
-  # config.default_related_strategy = :through_parent_resource_0_10
+  config.maximum_page_size = 2000
+  config.default_resource_retrieval_strategy = :none
 end

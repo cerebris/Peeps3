@@ -14,7 +14,8 @@ gem "pg", "~> 1.1"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
-gem "jsonapi-resources", path: "../jsonapi-resources"
+# gem "jsonapi-resources", path: "../jsonapi-resources"
+gem "jsonapi-resources", "~> 0.11.0.beta2"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
@@ -50,5 +51,14 @@ end
 group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  # gem 'rack-mini-profiler'
+  #
+  # # For memory profiling
+  # gem 'memory_profiler'
+  #
+  # # For call-stack profiling flamegraphs
+  # gem 'stackprof'
 end
 
+# gem 'active_record_aliased_joins'

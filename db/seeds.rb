@@ -7,19 +7,32 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 unless ENV["RAILS_ENV"] == 'test'
-  20.times do
-    user = User.create!({ user_name: Faker::Internet.username,
+  20.times do |i|
+    user = User.create!({ user_name: "user#{i}",
                           first_name: Faker::Name.first_name,
                           last_name: Faker::Name.last_name,
                           email: Faker::Internet.email })
-    Image.create!({ file_name: Faker::File.file_name(ext: 'jpg'),
-                    imageable: user})
+    Image.create!({ file_name: Faker::File.file_name(ext: 'jpg'), imageable: user })
   end
 
-  2000.times do
+  2.times do |i |
+    user = User.create!({ user_name: "admin#{i}",
+                          first_name: Faker::Name.first_name,
+                          last_name: Faker::Name.last_name,
+                          email: Faker::Internet.email,
+                          admin: true })
+    Image.create!({ file_name: Faker::File.file_name(ext: 'jpg'), imageable: user })
+  end
+
+  users = User.all
+
+  2000.times do |i|
+    # 10% of contacts are public
     contact = Contact.create({ first_name: Faker::Name.first_name,
                                last_name: Faker::Name.last_name,
-                               email: Faker::Internet.email })
+                               email: Faker::Internet.email,
+                               user: users.sample,
+                               public: i % 10 == 0})
 
     contact.phone_numbers.create({ name: 'cell',
                                    phone_number: Faker::PhoneNumber.cell_phone
@@ -30,8 +43,8 @@ unless ENV["RAILS_ENV"] == 'test'
                                  })
 
     3.times do
-      Image.create!({ file_name: Faker::File.file_name(ext: 'jpg'),
-                      imageable: contact})
+      Image.create!(file_name: Faker::File.file_name(ext: 'jpg'),
+                    imageable: contact)
     end
   end
 end

@@ -1,4 +1,4 @@
-class ContactResource < BaseResource
+class V10::ContactResource < V10::BaseResource
   attributes :first_name, :last_name, :full_name, :nick_name, :email
 
   has_many :phone_numbers

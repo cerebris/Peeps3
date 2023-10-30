@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_09_172417) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_29_200942) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
@@ -23,6 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_09_172417) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.uuid "created_by_user_id"
+    t.boolean "public", default: false, null: false
     t.index ["created_by_user_id"], name: "index_contacts_on_created_by_user_id"
   end
 
@@ -44,6 +45,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_09_172417) do
     t.index ["contact_id"], name: "index_phone_numbers_on_contact_id"
   end
 
+  create_table "preferences", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "favorite_color"
+    t.boolean "notify_about_new_contacts"
+    t.uuid "user_id"
+    t.index ["user_id"], name: "index_preferences_on_user_id", unique: true
+  end
+
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "user_name"
     t.string "first_name"
@@ -51,8 +59,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_09_172417) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin", default: false
   end
 
   add_foreign_key "contacts", "users", column: "created_by_user_id"
   add_foreign_key "phone_numbers", "contacts"
+  add_foreign_key "preferences", "users"
 end

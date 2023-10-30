@@ -1,4 +1,4 @@
-class PhoneNumberResource < BaseResource
+class V10::PhoneNumberResource < V10::BaseResource
   attributes :name, :phone_number
   has_one :contact
 
