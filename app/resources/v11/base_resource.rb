@@ -7,18 +7,18 @@ class V11::BaseResource
     alias original_records records
 
     def user_records(user, options)
-      original_records.for_user(user, options)
+      original_records(options).for_user(user, options)
     end
 
     def admin_records(admin, options)
-      original_records.for_admin(admin, options)
+      original_records(options).for_admin(admin, options)
     end
 
     def unauthenticated_records(options)
-      original_records.for_unauthenticated(options)
+      original_records(options).for_unauthenticated(options)
     end
 
-    def records(options = {})
+    def records(options)
       context = options[:context]
       current_user = context[:current_user]
 
