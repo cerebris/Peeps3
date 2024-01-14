@@ -12,4 +12,8 @@ JSONAPI.configure do |config|
   config.default_page_size = 10
   config.maximum_page_size = 2000
   config.default_resource_retrieval_strategy = :none
+
+
+  config.default_find_related_through = :inverse
+  config.default_find_related_through_polymorphic = :inverse
 end
