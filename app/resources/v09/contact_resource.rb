@@ -2,7 +2,7 @@ class V09::ContactResource < V09::BaseResource
   attributes :first_name, :last_name, :full_name, :nick_name, :email, :public
 
   has_many :phone_numbers
-  has_many :images, inverse_relationship: :imageable
+  has_many :images
   has_one :user
 
   def full_name
