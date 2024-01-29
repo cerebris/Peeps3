@@ -25,3 +25,10 @@ services:
       back:
     environment:
       - POSTGRES_PASSWORD=password
+
+  redis_cache:
+    image: redis
+    networks:
+      back:
+    ports:
+      - "6379"

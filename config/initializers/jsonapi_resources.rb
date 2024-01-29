@@ -1,8 +1,10 @@
 JSONAPI.configure do |config|
   config.resource_key_type = :uuid
 
-  config.resource_cache = Rails.cache if Rails.application.config.cache_store
-  config.default_caching = config.resource_cache.present?
+  if Rails.application.config.action_controller.perform_caching
+    config.resource_cache = Rails.cache if Rails.application.config.cache_store
+    config.default_caching = true
+  end
 
   # Options are :none, :offset, :paged, or a custom paginator name
   config.default_paginator = :paged # default is :none
