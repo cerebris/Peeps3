@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.2.0"
+ruby "3.2.2"
 
 gem 'dotenv-rails', groups: [:development, :test]
 
@@ -12,7 +12,7 @@ gem "rails", "~> 7.1"
 gem "pg", "~> 1.1"
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 5.0"
+gem "puma", "~> 6.0"
 
 gem "jsonapi-resources", path: "../jsonapi-resources"
 # gem "jsonapi-resources", "~> 0.11.0.beta2"
