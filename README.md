@@ -39,6 +39,8 @@ curl "http://localhost:4000/v11/contacts?include=phone-numbers&include=images&pa
      -H 'Accept: application/vnd.api+json'
 ```
 
+There are some additional curl commands to access the api in the [Wiki](https://github.com/cerebris/Peeps3/wiki/Request-Examples).
+
 ## Differences by resource retrieval strategy
 
 Currently using 'JSONAPI::ActiveRelationRetrievalV09' does not apply permissions filtering to the included resources
