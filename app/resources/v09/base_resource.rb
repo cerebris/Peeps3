@@ -31,4 +31,10 @@ class V09::BaseResource
       end
     end
   end
+
+  # def records_for(relation_name)
+  #   # super calls `_model.public_send relation_name`
+  #   # this loads the related models from the resource using the model includes
+  #   super
+  # end
 end

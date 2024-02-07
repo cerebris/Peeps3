@@ -3,7 +3,7 @@ class V11::ContactResource < V11::BaseResource
 
   has_many :phone_numbers
   has_many :images
-  has_one :user
+  has_one :creator, class_name: "User"
 
   def full_name
     "#{@model.first_name} #{@model.last_name}"

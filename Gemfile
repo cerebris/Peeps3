@@ -14,6 +14,7 @@ gem "pg", "~> 1.1"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 6.0"
 
+# Using local copy of JR for now to get latest changes
 gem "jsonapi-resources", path: "../jsonapi-resources"
 # gem "jsonapi-resources", "~> 0.11.0.beta2"
 
